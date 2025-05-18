@@ -4,7 +4,7 @@ import { FaCircle } from "react-icons/fa";
 
 const skills = [
   {
-    group: "语言",
+    group: "Languages",
     items: [
       { name: "Python", level: 5 },
       { name: "JavaScript", level: 4 },
@@ -12,7 +12,7 @@ const skills = [
     ],
   },
   {
-    group: "前端",
+    group: "Frontend",
     items: [
       { name: "HTML/CSS", level: 5 },
       { name: "Vue.js", level: 3 },
@@ -20,14 +20,14 @@ const skills = [
     ],
   },
   {
-    group: "后端",
+    group: "Backend",
     items: [
       { name: "Node.js", level: 4 },
       { name: "Spring Boot", level: 3 },
     ],
   },
   {
-    group: "AI / 工具",
+    group: "AI / Tools",
     items: [
       { name: "TensorFlow", level: 4 },
       { name: "ROS / Gazebo", level: 4 },
@@ -38,18 +38,18 @@ const skills = [
 export default function AboutPage() {
   return (
     <main className="max-w-3xl mx-auto px-4 py-16">
-      <h1 className="text-3xl font-bold mb-6 text-accent">关于我</h1>
+      <h1 className="text-3xl font-bold mb-6 text-accent">About Me</h1>
       <section className="mb-10">
         <p className="text-lg text-white/90 leading-relaxed mb-2">
-          你好！我是 Evan Zhang，一名热爱 AI 与软件开发的工程师，喜欢用代码解决实际问题，追求技术的深度与广度。曾在多家企业实习，参与前后端、AI、机器人等多领域项目。热衷于学习新技术，也乐于分享与协作。
+          Hi! I&apos;m Evan Zhang, a passionate engineer in AI and software development. I love solving real-world problems with code and strive for both depth and breadth in technology. I have interned at several companies, participating in projects across frontend, backend, AI, and robotics. I&apos;m always eager to learn new things and enjoy sharing and collaborating with others.
         </p>
       </section>
       <section>
-        <h2 className="text-2xl font-semibold mb-4 text-neon">技能熟练度</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-neon">Skill Proficiency</h2>
         <div className="grid md:grid-cols-2 gap-6">
           {skills.map((group) => (
             <div key={group.group}>
-              <h3 className="font-mono text-lg text-accent mb-2">【{group.group}】</h3>
+              <h3 className="font-mono text-lg text-accent mb-2">[{group.group}]</h3>
               <ul className="space-y-2">
                 {group.items.map((item) => (
                   <li key={item.name} className="flex items-center gap-3">

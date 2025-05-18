@@ -1,55 +1,56 @@
 "use client";
+import React from "react";
 import { useState } from "react";
 import { FaGithub, FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 const projects = [
   {
     name: "Website Builder Platform",
-    time: "2024.03 – 2024.05",
-    desc: "低代码网站搭建平台，支持可视化拖拽、组件市场与一键发布。",
+    time: "Mar 2024 – May 2024",
+    desc: "A low-code website builder platform supporting visual drag-and-drop, component marketplace, and one-click publishing.",
     tech: ["React", "Node.js", "MongoDB", "TailwindCSS"],
     github: "https://github.com/evan-zhang/website-builder",
-    detail: "负责前端架构设计与核心功能开发，实现组件拖拽、实时预览与模板市场。后端支持多用户协作与权限管理。",
+    detail: "Led frontend architecture and core feature development, including component drag-and-drop, real-time preview, and template marketplace. Backend supports multi-user collaboration and permission management.",
   },
   {
     name: "AI Image Classification",
-    time: "2023.12 – 2024.02",
-    desc: "基于深度学习的图像分类系统，支持多类别识别与模型可视化。",
+    time: "Dec 2023 – Feb 2024",
+    desc: "A deep learning-based image classification system supporting multi-class recognition and model visualization.",
     tech: ["Python", "TensorFlow", "Flask"],
     github: "https://github.com/evan-zhang/ai-image-classification",
-    detail: "主导模型训练与 API 部署，前端实现结果展示与交互。",
+    detail: "Led model training and API deployment, frontend for result display and interaction.",
   },
   {
     name: "Airplane Battle Game",
-    time: "2023.08 – 2023.10",
-    desc: "2D 飞机大战游戏，支持多种武器与关卡。",
+    time: "Aug 2023 – Oct 2023",
+    desc: "2D airplane battle game with multiple weapons and levels.",
     tech: ["C++", "SDL2"],
     github: "https://github.com/evan-zhang/airplane-battle",
-    detail: "独立开发游戏引擎与关卡系统，实现碰撞检测与动画。",
+    detail: "Independently developed game engine and level system, implemented collision detection and animation.",
   },
   {
     name: "Text Emotion Detection Paper",
-    time: "2023.05 – 2023.07",
-    desc: "情感识别论文，提出基于 LSTM 的文本情感分析方法。",
+    time: "May 2023 – Jul 2023",
+    desc: "Emotion recognition paper proposing an LSTM-based text sentiment analysis method.",
     tech: ["Python", "PyTorch"],
     github: "https://github.com/evan-zhang/text-emotion-paper",
-    detail: "负责模型设计与实验，论文被校级会议收录。",
+    detail: "Responsible for model design and experiments, paper accepted by university conference.",
   },
   {
-    name: "CLI 工具 + LLM 微调（AsiaInfo）",
-    time: "2023.01 – 2023.04",
-    desc: "企业级命令行工具与大模型微调实践。",
+    name: "CLI Tool + LLM Fine-tuning (AsiaInfo)",
+    time: "Jan 2023 – Apr 2023",
+    desc: "Enterprise-level CLI tool and LLM fine-tuning practice.",
     tech: ["Python", "LLM", "CLI"],
     github: "https://github.com/evan-zhang/cli-llm-asiainfo",
-    detail: "参与 CLI 工具开发与 LLM 微调流程，提升模型推理效率。",
+    detail: "Participated in CLI tool development and LLM fine-tuning process, improved model inference efficiency.",
   },
   {
-    name: "多传感器 SLAM 系统（Yaoxuanyuan）",
-    time: "2022.09 – 2022.12",
-    desc: "多传感器融合的 SLAM 机器人系统。",
+    name: "Multi-sensor SLAM System (Yaoxuanyuan)",
+    time: "Sep 2022 – Dec 2022",
+    desc: "Multi-sensor fusion SLAM robot system.",
     tech: ["C++", "ROS", "Gazebo"],
     github: "https://github.com/evan-zhang/slam-yaoxuanyuan",
-    detail: "负责传感器数据融合与仿真环境搭建，提升定位精度。",
+    detail: "Responsible for sensor data fusion and simulation environment setup, improved localization accuracy.",
   },
 ];
 
@@ -57,7 +58,7 @@ export default function ProjectsPage() {
   const [openIdx, setOpenIdx] = useState(-1);
   return (
     <main className="max-w-3xl mx-auto px-4 py-16">
-      <h1 className="text-3xl font-bold mb-8 text-accent">项目经历</h1>
+      <h1 className="text-3xl font-bold mb-8 text-accent">Projects</h1>
       <div className="border-l-2 border-accent/40 pl-4">
         {projects.map((proj, idx) => (
           <div key={proj.name} className="mb-8 relative">
@@ -75,12 +76,12 @@ export default function ProjectsPage() {
                 <h2 className="text-xl font-bold text-neon">{proj.name}</h2>
                 <div className="flex gap-2 items-center">
                   <a href={proj.github} target="_blank" rel="noopener noreferrer" className="text-accent hover:text-neon text-lg flex items-center gap-1">
-                    <FaGithub /> 查看代码
+                    <FaGithub /> View Code
                   </a>
                   <button
                     className="ml-2 text-accent hover:text-neon text-lg focus:outline-none"
                     onClick={() => setOpenIdx(openIdx === idx ? -1 : idx)}
-                    aria-label="展开详情"
+                    aria-label="Expand details"
                   >
                     {openIdx === idx ? <FaChevronUp /> : <FaChevronDown />}
                   </button>

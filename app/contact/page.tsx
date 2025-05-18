@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import { useState } from "react";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import ParticleBackground from "../../components/ParticleBackground";
@@ -15,7 +16,7 @@ export default function ContactPage() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     setLoading(true);
-    // TODO: 集成 EmailJS
+    // TODO: Integrate EmailJS
     setTimeout(() => {
       setSent(true);
       setLoading(false);
@@ -27,7 +28,7 @@ export default function ContactPage() {
     <main className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <ParticleBackground className="absolute inset-0 -z-10" />
       <section className="z-10 w-full max-w-lg mx-auto px-4 py-20 bg-primary/80 rounded-xl shadow-lg backdrop-blur-md">
-        <h1 className="text-3xl font-bold mb-6 text-accent text-center">联系我</h1>
+        <h1 className="text-3xl font-bold mb-6 text-accent text-center">Contact Me</h1>
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <input
             type="text"
@@ -61,9 +62,9 @@ export default function ContactPage() {
             disabled={loading}
             className="mt-2 px-6 py-2 rounded-lg bg-accent text-primary font-bold shadow-lg hover:scale-105 hover:bg-neon transition-all duration-200 disabled:opacity-60"
           >
-            {loading ? "发送中..." : "发送消息"}
+            {loading ? "Sending..." : "Send Message"}
           </button>
-          {sent && <div className="text-neon text-center mt-2">感谢您的联系！我会尽快回复。</div>}
+          {sent && <div className="text-neon text-center mt-2">Thank you for reaching out! I will get back to you soon.</div>}
         </form>
         <div className="flex justify-center gap-6 mt-8">
           <a href="https://github.com/evan-zhang" target="_blank" rel="noopener noreferrer" className="text-2xl text-accent hover:text-neon"><FaGithub /></a>

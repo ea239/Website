@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import ParticleBackground from "../components/ParticleBackground";
 import Link from "next/link";
 import { motion } from "framer-motion";

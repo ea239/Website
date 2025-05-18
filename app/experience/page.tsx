@@ -1,17 +1,18 @@
 "use client";
+import React from "react";
 import { FaPython, FaReact, FaNodeJs, FaRobot, FaJava } from "react-icons/fa";
 import { SiSpringboot, SiTensorflow, SiCplusplus, SiJavascript, SiRos, SiGazebo } from "react-icons/si";
 import { motion } from "framer-motion";
 
 const experiences = [
   {
-    time: "2025.01 – 2025.04",
+    time: "Jan 2025 – Apr 2025",
     company: "AsiaInfo",
-    role: "AI 实习工程师",
+    role: "AI Intern Engineer",
     duties: [
-      "参与企业级 LLM 微调与推理优化",
-      "开发命令行工具，提升数据处理效率",
-      "协作部署模型 API 服务"
+      "Participated in enterprise-level LLM fine-tuning and inference optimization",
+      "Developed CLI tools to improve data processing efficiency",
+      "Collaborated on model API deployment"
     ],
     tech: [
       { icon: <FaPython />, label: "Python" },
@@ -20,13 +21,13 @@ const experiences = [
     ],
   },
   {
-    time: "2024.03 – 2024.05",
+    time: "Mar 2024 – May 2024",
     company: "Website Builder Startup",
-    role: "前端开发实习生",
+    role: "Frontend Developer Intern",
     duties: [
-      "负责前端架构与组件开发",
-      "实现可视化拖拽与实时预览",
-      "优化用户交互体验"
+      "Responsible for frontend architecture and component development",
+      "Implemented visual drag-and-drop and real-time preview",
+      "Optimized user interaction experience"
     ],
     tech: [
       { icon: <FaReact />, label: "React" },
@@ -35,13 +36,13 @@ const experiences = [
     ],
   },
   {
-    time: "2023.12 – 2024.02",
+    time: "Dec 2023 – Feb 2024",
     company: "AI Lab",
-    role: "AI 研究助理",
+    role: "AI Research Assistant",
     duties: [
-      "深度学习模型训练与调优",
-      "搭建 Flask API 服务",
-      "撰写技术文档与论文"
+      "Trained and optimized deep learning models",
+      "Built Flask API services",
+      "Wrote technical documentation and papers"
     ],
     tech: [
       { icon: <FaPython />, label: "Python" },
@@ -50,13 +51,13 @@ const experiences = [
     ],
   },
   {
-    time: "2022.09 – 2022.12",
+    time: "Sep 2022 – Dec 2022",
     company: "Yaoxuanyuan Robotics",
-    role: "机器人算法实习生",
+    role: "Robotics Algorithm Intern",
     duties: [
-      "多传感器数据融合与 SLAM 算法实现",
-      "仿真环境搭建与测试",
-      "参与 ROS/Gazebo 系统开发"
+      "Implemented multi-sensor data fusion and SLAM algorithms",
+      "Built and tested simulation environments",
+      "Participated in ROS/Gazebo system development"
     ],
     tech: [
       { icon: <SiCplusplus />, label: "C++" },
@@ -69,7 +70,7 @@ const experiences = [
 export default function ExperiencePage() {
   return (
     <main className="max-w-3xl mx-auto px-4 py-16">
-      <h1 className="text-3xl font-bold mb-8 text-accent">实习与工作经验</h1>
+      <h1 className="text-3xl font-bold mb-8 text-accent">Experience</h1>
       <div className="border-l-2 border-accent/40 pl-4">
         {experiences.map((exp, idx) => (
           <motion.div
