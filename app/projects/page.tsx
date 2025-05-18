@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import { FaGithub, FaChevronDown, FaChevronUp } from "react-icons/fa";
 

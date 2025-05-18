@@ -1,3 +1,4 @@
+"use client";
 import ParticleBackground from "../components/ParticleBackground";
 import Link from "next/link";
 import { motion } from "framer-motion";

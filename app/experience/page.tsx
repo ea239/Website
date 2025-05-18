@@ -1,3 +1,4 @@
+"use client";
 import { FaPython, FaReact, FaNodeJs, FaRobot, FaJava } from "react-icons/fa";
 import { SiSpringboot, SiTensorflow, SiCplusplus, SiJavascript, SiRos, SiGazebo } from "react-icons/si";
 import { motion } from "framer-motion";
