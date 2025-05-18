@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-primary text-white font-sans;
+  min-height: 100vh;
+  background: #0F172A;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: #1e293b;
+}
+::-webkit-scrollbar-thumb {
+  background: #38BDF8;
+  border-radius: 4px;
+}
+
+code, pre {
+  font-family: 'JetBrains Mono', monospace;
+} 

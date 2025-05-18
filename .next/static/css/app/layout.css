@@ -1,0 +1,31 @@
+/*!*************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[3]!./app/globals.css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+
+body{
+  --tw-bg-opacity: 1;
+  background-color: rgb(15 23 42 / var(--tw-bg-opacity));
+  font-family: Inter, ui-sans-serif, system-ui;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  min-height: 100vh;
+  background: #0F172A;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: #1e293b;
+}
+::-webkit-scrollbar-thumb {
+  background: #38BDF8;
+  border-radius: 4px;
+}
+
+code, pre {
+  font-family: 'JetBrains Mono', monospace;
+} 
