@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import { FaPython, FaReact, FaNodeJs, FaRobot, FaJava } from "react-icons/fa";
-import { SiSpringboot, SiTensorflow, SiCplusplus, SiJavascript, SiRos, SiGazebo } from "react-icons/si";
+import { FaPython, FaReact, FaNodeJs, FaJava } from "react-icons/fa";
+import { SiSpringboot, SiTensorflow, SiCplusplus, SiRos } from "react-icons/si";
 import { motion } from "framer-motion";
 
 const experiences = [
@@ -16,7 +16,7 @@ const experiences = [
     ],
     tech: [
       { icon: <FaPython />, label: "Python" },
-      { icon: <FaRobot />, label: "LLM" },
+      { icon: null, label: "LLM" },
       { icon: <FaNodeJs />, label: "CLI" },
     ],
   },
@@ -62,7 +62,7 @@ const experiences = [
     tech: [
       { icon: <SiCplusplus />, label: "C++" },
       { icon: <SiRos />, label: "ROS" },
-      { icon: <SiGazebo />, label: "Gazebo" },
+      { icon: null, label: "Gazebo" },
     ],
   },
 ];
@@ -79,7 +79,7 @@ export default function ExperiencePage() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: idx * 0.1, ease: "easeOut" }}
-            className="mb-10 relative"
+            style={{ position: 'relative', marginBottom: '2.5rem' }}
           >
             <div className="absolute -left-5 top-3 w-3 h-3 bg-neon rounded-full shadow-lg" />
             <div className="bg-primary/80 rounded-lg shadow-md p-5">
@@ -88,7 +88,7 @@ export default function ExperiencePage() {
                 <div className="flex gap-2 flex-wrap">
                   {exp.tech.map((t, i) => (
                     <span key={i} className="group relative flex items-center">
-                      <span className="text-accent text-lg">{t.icon}</span>
+                      {t.icon && <span className="text-accent text-lg">{t.icon}</span>}
                       <span className="absolute left-1/2 -translate-x-1/2 top-8 scale-0 group-hover:scale-100 transition bg-black/80 text-xs text-white px-2 py-1 rounded shadow-lg z-10 whitespace-nowrap">{t.label}</span>
                     </span>
                   ))}

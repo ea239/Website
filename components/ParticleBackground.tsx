@@ -1,5 +1,5 @@
 "use client";
-import { useCallback } from "react";
+import React, { useCallback } from "react";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 
@@ -13,8 +13,9 @@ export default function ParticleBackground({ className = "" }: { className?: str
       id="tsparticles"
       init={particlesInit}
       className={className}
+      style={{ zIndex: 0, position: 'absolute', top: 0, left: 0, width: '100vw', height: '100vh' }}
       options={{
-        background: { color: "#0F172A" },
+        background: { color: "transparent" },
         fpsLimit: 60,
         particles: {
           color: { value: "#38BDF8" },

@@ -1,6 +1,20 @@
 "use client";
 import React from "react";
-import { FaCircle } from "react-icons/fa";
+import { FaPython, FaJs, FaReact, FaHtml5, FaCss3Alt, FaNodeJs } from "react-icons/fa";
+import { SiSpringboot, SiTensorflow, SiRos, SiVuedotjs, SiCplusplus } from "react-icons/si";
+
+const skillIcons = {
+  Python: <FaPython className="text-[#3776AB]" />,
+  "JavaScript": <FaJs className="text-[#F7DF1E]" />,
+  "C/C++": <SiCplusplus className="text-[#00599C]" />,
+  "HTML/CSS": <><FaHtml5 className="text-[#E34F26]" /><FaCss3Alt className="text-[#1572B6] ml-1" /></>,
+  "Vue.js": <SiVuedotjs className="text-[#42b883]" />,
+  React: <FaReact className="text-[#61DAFB]" />,
+  "Node.js": <FaNodeJs className="text-[#3C873A]" />,
+  "Spring Boot": <SiSpringboot className="text-[#6DB33F]" />,
+  TensorFlow: <SiTensorflow className="text-[#FF6F00]" />,
+  "ROS / Gazebo": <SiRos className="text-[#22314E]" />,
+};
 
 const skills = [
   {
@@ -48,19 +62,23 @@ export default function AboutPage() {
         <h2 className="text-2xl font-semibold mb-4 text-neon">Skill Proficiency</h2>
         <div className="grid md:grid-cols-2 gap-6">
           {skills.map((group) => (
-            <div key={group.group}>
-              <h3 className="font-mono text-lg text-accent mb-2">[{group.group}]</h3>
-              <ul className="space-y-2">
+            <div key={group.group} className="bg-black/40 rounded-2xl shadow-xl border border-accent/30 backdrop-blur-md p-6">
+              <h3 className="font-mono text-lg text-accent mb-4 tracking-wider">[{group.group}]</h3>
+              <ul className="space-y-4">
                 {group.items.map((item) => (
-                  <li key={item.name} className="flex items-center gap-3">
-                    <span className="w-32 font-mono text-white/80">{item.name}</span>
-                    <span className="flex gap-1">
-                      {[1,2,3,4,5].map((i) => (
-                        <FaCircle key={i} className={
-                          i <= item.level ? "text-accent" : "text-white/20"
-                        } />
-                      ))}
-                    </span>
+                  <li key={item.name} className="flex flex-col gap-1">
+                    <div className="flex items-center gap-3">
+                      <span className="text-2xl">{skillIcons[item.name]}</span>
+                      <span className="w-32 font-mono text-white/90 text-base">{item.name}</span>
+                      <span className="text-xs text-white/50">Lv.{item.level}</span>
+                    </div>
+                    <div className="w-full h-3 rounded-full bg-white/10 overflow-hidden relative mt-1">
+                      <div
+                        className="h-full rounded-full bg-gradient-to-r from-[#38BDF8] via-[#10B981] to-[#F7DF1E] shadow-lg animate-pulse-slow"
+                        style={{ width: `${item.level * 20}%`, boxShadow: '0 0 12px #10B981, 0 0 24px #38BDF8' }}
+                      ></div>
+                      <div className="absolute inset-0 rounded-full pointer-events-none" style={{ boxShadow: item.level === 5 ? '0 0 16px 4px #10B981' : 'none' }}></div>
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -70,4 +88,7 @@ export default function AboutPage() {
       </section>
     </main>
   );
-} 
+}
+
+// @keyframes pulse-slow { 0%,100%{opacity:1} 50%{opacity:.7} }
+// .animate-pulse-slow { animation: pulse-slow 2.5s infinite; } 
