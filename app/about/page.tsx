@@ -1,94 +1,215 @@
 "use client";
-import React from "react";
-import { FaPython, FaJs, FaReact, FaHtml5, FaCss3Alt, FaNodeJs } from "react-icons/fa";
-import { SiSpringboot, SiTensorflow, SiRos, SiVuedotjs, SiCplusplus } from "react-icons/si";
+import React, { useMemo, useState } from "react";
+import { motion } from "framer-motion";
+import {
+  FaPython,
+  FaJs,
+  FaReact,
+  FaHtml5,
+  FaCss3Alt,
+  FaNodeJs,
+  FaJava,
+  FaDatabase,
+  FaDocker,
+  FaGitAlt,
+} from "react-icons/fa";
+import {
+  SiSpringboot,
+  SiTensorflow,
+  SiRos,
+  SiVuedotjs,
+  SiCplusplus,
+  SiFastapi,
+  SiPostgresql,
+  SiRedis,
+  SiPytorch,
+  SiMongodb,
+} from "react-icons/si";
+import ParticleBackground from "../../components/ParticleBackground";
 
-const skillIcons = {
-  Python: <FaPython className="text-[#3776AB]" />,
-  "JavaScript": <FaJs className="text-[#F7DF1E]" />,
-  "C/C++": <SiCplusplus className="text-[#00599C]" />,
-  "HTML/CSS": <><FaHtml5 className="text-[#E34F26]" /><FaCss3Alt className="text-[#1572B6] ml-1" /></>,
-  "Vue.js": <SiVuedotjs className="text-[#42b883]" />,
-  React: <FaReact className="text-[#61DAFB]" />,
-  "Node.js": <FaNodeJs className="text-[#3C873A]" />,
-  "Spring Boot": <SiSpringboot className="text-[#6DB33F]" />,
-  TensorFlow: <SiTensorflow className="text-[#FF6F00]" />,
-  "ROS / Gazebo": <SiRos className="text-[#22314E]" />,
-};
+type SkillItem = { name: string; level: number; icon: React.ReactNode };
+type SkillGroup = { group: string; items: SkillItem[] };
 
-const skills = [
+const groups: SkillGroup[] = [
   {
     group: "Languages",
     items: [
-      { name: "Python", level: 5 },
-      { name: "JavaScript", level: 4 },
-      { name: "C/C++", level: 4 },
+      { name: "Python", level: 5, icon: <FaPython className="text-[#3776AB]" /> },
+      { name: "C/C++", level: 4, icon: <SiCplusplus className="text-[#00599C]" /> },
+      { name: "JavaScript", level: 4, icon: <FaJs className="text-[#F7DF1E]" /> },
+      { name: "Java", level: 3, icon: <FaJava className="text-[#f89820]" /> },
+      { name: "SQL", level: 4, icon: <FaDatabase className="text-[#9CA3AF]" /> },
     ],
   },
   {
     group: "Frontend",
     items: [
-      { name: "HTML/CSS", level: 5 },
-      { name: "Vue.js", level: 3 },
-      { name: "React", level: 4 },
+      { name: "React", level: 4, icon: <FaReact className="text-[#61DAFB]" /> },
+      { name: "Vue.js", level: 3, icon: <SiVuedotjs className="text-[#42b883]" /> },
+      { name: "HTML", level: 5, icon: <FaHtml5 className="text-[#E34F26]" /> },
+      { name: "CSS", level: 5, icon: <FaCss3Alt className="text-[#1572B6]" /> },
     ],
   },
   {
     group: "Backend",
     items: [
-      { name: "Node.js", level: 4 },
-      { name: "Spring Boot", level: 3 },
+      { name: "FastAPI", level: 4, icon: <SiFastapi className="text-white" /> },
+      { name: "Node.js", level: 4, icon: <FaNodeJs className="text-[#3C873A]" /> },
+      { name: "Spring Boot", level: 3, icon: <SiSpringboot className="text-[#6DB33F]" /> },
+      { name: "PostgreSQL", level: 4, icon: <SiPostgresql className="text-[#336791]" /> },
+      { name: "Redis", level: 4, icon: <SiRedis className="text-[#DC2626]" /> },
+      { name: "MongoDB", level: 3, icon: <SiMongodb className="text-[#47A248]" /> },
     ],
   },
   {
     group: "AI / Tools",
     items: [
-      { name: "TensorFlow", level: 4 },
-      { name: "ROS / Gazebo", level: 4 },
+      { name: "TensorFlow", level: 4, icon: <SiTensorflow className="text-[#FF6F00]" /> },
+      { name: "PyTorch", level: 3, icon: <SiPytorch className="text-[#EE4C2C]" /> },
+      { name: "ROS / Gazebo", level: 4, icon: <SiRos className="text-[#22314E]" /> },
+      { name: "Docker", level: 4, icon: <FaDocker className="text-[#2496ED]" /> },
+      { name: "Git", level: 4, icon: <FaGitAlt className="text-[#F1502F]" /> },
     ],
   },
 ];
 
-export default function AboutPage() {
+function SkillCard({
+  group,
+  idx,
+  expanded,
+  onToggle,
+  compact,
+}: {
+  group: SkillGroup;
+  idx: number;
+  expanded: boolean;
+  compact: boolean;
+  onToggle: () => void;
+}) {
+  const showItems = expanded ? group.items : group.items.slice(0, 3);
   return (
-    <main className="max-w-3xl mx-auto px-4 py-16">
-      <h1 className="text-3xl font-bold mb-6 text-accent">About Me</h1>
-      <section className="mb-10">
-        <p className="text-lg text-white/90 leading-relaxed mb-2">
-          Hi! I&apos;m Evan Zhang, a passionate engineer in AI and software development. I love solving real-world problems with code and strive for both depth and breadth in technology. I have interned at several companies, participating in projects across frontend, backend, AI, and robotics. I&apos;m always eager to learn new things and enjoy sharing and collaborating with others.
-        </p>
-      </section>
-      <section>
-        <h2 className="text-2xl font-semibold mb-4 text-neon">Skill Proficiency</h2>
-        <div className="grid md:grid-cols-2 gap-6">
-          {skills.map((group) => (
-            <div key={group.group} className="bg-black/40 rounded-2xl shadow-xl border border-accent/30 backdrop-blur-md p-6">
-              <h3 className="font-mono text-lg text-accent mb-4 tracking-wider">[{group.group}]</h3>
-              <ul className="space-y-4">
-                {group.items.map((item) => (
-                  <li key={item.name} className="flex flex-col gap-1">
-                    <div className="flex items-center gap-3">
-                      <span className="text-2xl">{skillIcons[item.name]}</span>
-                      <span className="w-32 font-mono text-white/90 text-base">{item.name}</span>
-                      <span className="text-xs text-white/50">Lv.{item.level}</span>
-                    </div>
-                    <div className="w-full h-3 rounded-full bg-white/10 overflow-hidden relative mt-1">
-                      <div
-                        className="h-full rounded-full bg-gradient-to-r from-[#38BDF8] via-[#10B981] to-[#F7DF1E] shadow-lg animate-pulse-slow"
-                        style={{ width: `${item.level * 20}%`, boxShadow: '0 0 12px #10B981, 0 0 24px #38BDF8' }}
-                      ></div>
-                      <div className="absolute inset-0 rounded-full pointer-events-none" style={{ boxShadow: item.level === 5 ? '0 0 16px 4px #10B981' : 'none' }}></div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
+    <motion.div
+      layout
+      transition={{ duration: 0.35, ease: "easeInOut" }}
+      className={`bg-black/40 rounded-2xl shadow-xl border border-accent/30 backdrop-blur-md p-5 ${compact ? "opacity-90" : ""}`}
+    >
+      <button
+        onClick={onToggle}
+        className="w-full text-left flex items-center justify-between"
+        aria-expanded={expanded}
+        aria-controls={`skill-group-${idx}`}
+      >
+        <h3 className="font-mono text-lg text-accent tracking-wider">[{group.group}]</h3>
+        <span className="text-xs text-white/60">{expanded ? "Collapse" : "Expand"}</span>
+      </button>
+
+      <ul id={`skill-group-${idx}`} className="space-y-3 mt-4">
+        {showItems.map((item) => (
+          <li key={item.name} className="flex flex-col gap-1">
+            <div className="flex items-center gap-3">
+              <span className="text-xl">{item.icon}</span>
+              <span className="w-36 font-mono text-white/90 text-sm md:text-base">{item.name}</span>
+              <span className="text-xs text-white/50">Lv.{item.level}</span>
             </div>
-          ))}
-        </div>
+            <div className="w-full h-2.5 rounded-full bg-white/10 overflow-hidden relative mt-1">
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-[#38BDF8] via-[#10B981] to-[#F7DF1E] shadow-lg"
+                style={{ width: `${item.level * 20}%` }}
+              ></div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </motion.div>
+  );
+}
+
+export default function AboutPage() {
+  const [expandedIdx, setExpandedIdx] = useState<number | null>(null);
+
+  const topExpanded = useMemo(() => expandedIdx !== null && expandedIdx < 2, [expandedIdx]);
+  const bottomExpanded = useMemo(() => expandedIdx !== null && expandedIdx >= 2, [expandedIdx]);
+
+  const rest = (i: number) => groups.filter((_, idx) => idx !== i);
+
+  return (
+    <main className="relative min-h-screen overflow-hidden">
+      <ParticleBackground className="absolute inset-0 -z-10" />
+      <section className="relative z-10 max-w-3xl mx-auto px-4 py-16">
+        <h1 className="text-3xl font-bold mb-6 text-accent">About Me</h1>
+        <section className="mb-10">
+          <p className="text-base md:text-lg text-white/90 leading-relaxed mb-2">
+            I&apos;m a University of Waterloo Computer Engineering student focused on backend systems, distributed infrastructure, and AI tooling. My internships and projects center on shipping reliable systems with measurable engineering impact.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold mb-4 text-neon">Skill Proficiency</h2>
+
+          {expandedIdx === null && (
+            <div className="grid md:grid-cols-2 gap-6">
+              {groups.map((g, idx) => (
+                <SkillCard
+                  key={g.group}
+                  group={g}
+                  idx={idx}
+                  expanded={false}
+                  compact={false}
+                  onToggle={() => setExpandedIdx(idx)}
+                />
+              ))}
+            </div>
+          )}
+
+          {topExpanded && expandedIdx !== null && (
+            <motion.div layout className="space-y-4">
+              <SkillCard
+                group={groups[expandedIdx]}
+                idx={expandedIdx}
+                expanded
+                compact={false}
+                onToggle={() => setExpandedIdx(null)}
+              />
+              <div className="grid md:grid-cols-3 gap-4">
+                {rest(expandedIdx).map((g, i) => (
+                  <SkillCard
+                    key={g.group}
+                    group={g}
+                    idx={i}
+                    expanded={false}
+                    compact
+                    onToggle={() => setExpandedIdx(groups.findIndex((x) => x.group === g.group))}
+                  />
+                ))}
+              </div>
+            </motion.div>
+          )}
+
+          {bottomExpanded && expandedIdx !== null && (
+            <motion.div layout className="space-y-4">
+              <div className="space-y-3">
+                {rest(expandedIdx).map((g, i) => (
+                  <SkillCard
+                    key={g.group}
+                    group={g}
+                    idx={i}
+                    expanded={false}
+                    compact
+                    onToggle={() => setExpandedIdx(groups.findIndex((x) => x.group === g.group))}
+                  />
+                ))}
+              </div>
+              <SkillCard
+                group={groups[expandedIdx]}
+                idx={expandedIdx}
+                expanded
+                compact={false}
+                onToggle={() => setExpandedIdx(null)}
+              />
+            </motion.div>
+          )}
+        </section>
       </section>
     </main>
   );
 }
-
-// @keyframes pulse-slow { 0%,100%{opacity:1} 50%{opacity:.7} }
-// .animate-pulse-slow { animation: pulse-slow 2.5s infinite; } 

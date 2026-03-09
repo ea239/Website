@@ -67,9 +67,9 @@ export default function ContactPage() {
           {sent && <div className="text-neon text-center mt-2">Thank you for reaching out! I will get back to you soon.</div>}
         </form>
         <div className="flex justify-center gap-6 mt-8">
-          <a href="https://github.com/evan-zhang" target="_blank" rel="noopener noreferrer" className="text-2xl text-accent hover:text-neon"><FaGithub /></a>
-          <a href="https://linkedin.com/in/evan-zhang" target="_blank" rel="noopener noreferrer" className="text-2xl text-accent hover:text-neon"><FaLinkedin /></a>
-          <a href="mailto:evan.zhang@email.com" className="text-2xl text-accent hover:text-neon"><FaEnvelope /></a>
+          <a aria-label="GitHub profile" href="https://github.com/ea239" target="_blank" rel="noopener noreferrer" className="text-2xl text-accent hover:text-neon focus-visible:ring-2 focus-visible:ring-accent rounded"><FaGithub /></a>
+          <a aria-label="LinkedIn profile" href="https://linkedin.com/in/evan-zhang-920357290" target="_blank" rel="noopener noreferrer" className="text-2xl text-accent hover:text-neon focus-visible:ring-2 focus-visible:ring-accent rounded"><FaLinkedin /></a>
+          <a aria-label="Email Evan" href="mailto:e252zhan@uwaterloo.ca" className="text-2xl text-accent hover:text-neon focus-visible:ring-2 focus-visible:ring-accent rounded"><FaEnvelope /></a>
         </div>
       </section>
     </main>

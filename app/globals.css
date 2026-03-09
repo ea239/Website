@@ -25,4 +25,12 @@ body {
 
 code, pre {
   font-family: 'JetBrains Mono', monospace;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #38BDF8;
+  outline-offset: 2px;
 } 

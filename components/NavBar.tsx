@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiMenu, FiX } from "react-icons/fi";
@@ -16,6 +17,7 @@ export default function NavBar() {
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,7 +49,7 @@ export default function NavBar() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-white/90 hover:text-accent transition font-medium"
+                  className={`transition font-medium ${pathname === item.href ? "text-accent" : "text-white/90 hover:text-accent"}`}
                 >
                   {item.label}
                 </Link>
@@ -74,7 +76,7 @@ export default function NavBar() {
                     <Link
                       key={item.href}
                       href={item.href}
-                      className="text-white/90 hover:text-accent py-2 px-2 rounded transition font-medium"
+                      className={`py-2 px-2 rounded transition font-medium ${pathname === item.href ? "text-accent bg-white/5" : "text-white/90 hover:text-accent"}`}
                       onClick={() => setMenuOpen(false)}
                     >
                       {item.label}

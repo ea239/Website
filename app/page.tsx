@@ -12,7 +12,7 @@ export default function Home() {
           Hi, I&apos;m <span className="text-[#10B981] animate-pulse">Evan Zhang</span>
         </h1>
         <p className="text-xl md:text-2xl text-white/80 mb-10 font-mono drop-shadow">
-          Software & AI Enthusiast<br />Building frontends, backends, and intelligent agents
+          UW Computer Engineering student building backend systems, AI infrastructure, and production-grade tooling.
         </p>
         <div className="flex flex-col sm:flex-row gap-6 justify-center">
           <Link
