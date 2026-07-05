@@ -1,10 +1,11 @@
 "use client";
 import React, { useCallback } from "react";
 import Particles from "react-tsparticles";
+import type { Engine } from "tsparticles-engine";
 import { loadFull } from "tsparticles";
 
 export default function ParticleBackground({ className = "" }: { className?: string }) {
-  const particlesInit = useCallback(async (engine: any) => {
+  const particlesInit = useCallback(async (engine: Engine) => {
     await loadFull(engine);
   }, []);
 
@@ -13,10 +14,23 @@ export default function ParticleBackground({ className = "" }: { className?: str
       id="tsparticles"
       init={particlesInit}
       className={className}
-      style={{ zIndex: 0, position: 'absolute', top: 0, left: 0, width: '100vw', height: '100vh' }}
       options={{
+        fullScreen: { enable: true, zIndex: 0 },
         background: { color: "transparent" },
         fpsLimit: 60,
+        interactivity: {
+          detectsOn: "window",
+          events: {
+            onHover: { enable: true, mode: "grab" },
+            resize: true,
+          },
+          modes: {
+            grab: {
+              distance: 150,
+              links: { opacity: 0.4 },
+            },
+          },
+        },
         particles: {
           color: { value: "#38BDF8" },
           links: {
@@ -41,4 +55,4 @@ export default function ParticleBackground({ className = "" }: { className?: str
       }}
     />
   );
-} 
+}
