@@ -1,5 +1,18 @@
 import './globals.css';
+import { Inter, JetBrains_Mono } from 'next/font/google';
 import NavBar from '../components/NavBar';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-jetbrains',
+  display: 'swap',
+});
 
 export const metadata = {
   title: 'Evan Zhang | Portfolio',
@@ -11,11 +24,15 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: any }) {
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body>
@@ -24,4 +41,4 @@ export default function RootLayout({ children }: { children: any }) {
       </body>
     </html>
   );
-} 
+}

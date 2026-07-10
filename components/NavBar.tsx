@@ -15,22 +15,23 @@ const navItems = [
 
 export default function NavBar() {
   const [show, setShow] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
+    let lastY = window.scrollY;
     const handleScroll = () => {
-      if (window.scrollY < 50) {
+      const y = window.scrollY;
+      if (y < 50) {
         setShow(true);
-      } else {
-        setShow(window.scrollY < lastScrollY);
+      } else if (Math.abs(y - lastY) > 8) {
+        setShow(y < lastY);
       }
-      setLastScrollY(window.scrollY);
+      lastY = y;
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   return (
     <AnimatePresence>
@@ -40,7 +41,7 @@ export default function NavBar() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -80, opacity: 0 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="fixed top-0 left-0 w-full z-50 bg-gradient-to-b from-primary/80 to-transparent backdrop-blur-md shadow-lg"
+          className="fixed top-0 left-0 w-full z-50 bg-primary/70 backdrop-blur-md border-b border-white/5 shadow-lg"
         >
           <div className="max-w-5xl mx-auto flex items-center justify-between px-4 py-3">
             <Link href="/" className="text-xl font-bold tracking-wider text-accent">Evan Zhang</Link>

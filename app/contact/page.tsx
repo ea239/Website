@@ -2,6 +2,7 @@
 import React from "react";
 import { useState } from "react";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { motion } from "framer-motion";
 import ParticleBackground from "../../components/ParticleBackground";
 
 export default function ContactPage() {
@@ -27,7 +28,12 @@ export default function ContactPage() {
   return (
     <main className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <ParticleBackground className="absolute inset-0 -z-10" />
-      <section className="z-10 w-full max-w-lg mx-auto px-4 py-20 bg-primary/80 rounded-xl shadow-lg backdrop-blur-md">
+      <motion.section
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="z-10 w-full max-w-lg mx-auto px-6 py-16 bg-white/[0.03] rounded-2xl shadow-2xl backdrop-blur-md border border-white/10"
+      >
         <h1 className="text-3xl font-bold mb-6 text-accent text-center">Contact Me</h1>
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <input
@@ -71,7 +77,7 @@ export default function ContactPage() {
           <a aria-label="LinkedIn profile" href="https://linkedin.com/in/evan-zhang-920357290" target="_blank" rel="noopener noreferrer" className="text-2xl text-accent hover:text-neon focus-visible:ring-2 focus-visible:ring-accent rounded"><FaLinkedin /></a>
           <a aria-label="Email Evan" href="mailto:e252zhan@uwaterloo.ca" className="text-2xl text-accent hover:text-neon focus-visible:ring-2 focus-visible:ring-accent rounded"><FaEnvelope /></a>
         </div>
-      </section>
+      </motion.section>
     </main>
   );
 } 

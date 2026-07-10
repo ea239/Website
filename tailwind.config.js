@@ -8,15 +8,25 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#0F172A',
+        primary: '#09090B',
         accent: '#38BDF8',
         neon: '#10B981',
+        violet: '#818CF8',
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui'],
-        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular'],
+        sans: ['var(--font-inter)', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        mono: ['var(--font-jetbrains)', 'JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+      },
+      keyframes: {
+        'fade-in': {
+          from: { opacity: '0', transform: 'translateY(6px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
+        },
+      },
+      animation: {
+        'fade-in': 'fade-in 0.3s ease-out both',
       },
     },
   },
   plugins: [],
-}; 
+};

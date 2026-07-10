@@ -1,7 +1,8 @@
 "use client";
 import React from "react";
-import { FaPython, FaReact, FaNodeJs, FaJava } from "react-icons/fa";
-import { SiSpringboot, SiTensorflow, SiCplusplus, SiRos } from "react-icons/si";
+import { FaPython, FaReact, FaNodeJs, FaFlask } from "react-icons/fa";
+import { SiSpringboot, SiTensorflow, SiCplusplus, SiRos, SiOpenai } from "react-icons/si";
+import { FiTerminal, FiBox } from "react-icons/fi";
 import { motion } from "framer-motion";
 import ParticleBackground from "../../components/ParticleBackground";
 
@@ -17,8 +18,8 @@ const experiences = [
     ],
     tech: [
       { icon: <FaPython />, label: "Python" },
-      { icon: null, label: "LLM" },
-      { icon: <FaNodeJs />, label: "CLI" },
+      { icon: <SiOpenai />, label: "LLM" },
+      { icon: <FiTerminal />, label: "CLI" },
     ],
   },
   {
@@ -48,7 +49,7 @@ const experiences = [
     tech: [
       { icon: <FaPython />, label: "Python" },
       { icon: <SiTensorflow />, label: "TensorFlow" },
-      { icon: <FaJava />, label: "Flask" },
+      { icon: <FaFlask />, label: "Flask" },
     ],
   },
   {
@@ -63,7 +64,7 @@ const experiences = [
     tech: [
       { icon: <SiCplusplus />, label: "C++" },
       { icon: <SiRos />, label: "ROS" },
-      { icon: null, label: "Gazebo" },
+      { icon: <FiBox />, label: "Gazebo" },
     ],
   },
 ];
@@ -72,41 +73,54 @@ export default function ExperiencePage() {
   return (
     <main className="relative min-h-screen overflow-hidden">
       <ParticleBackground className="absolute inset-0 -z-10" />
-      <section className="relative z-10 max-w-3xl mx-auto px-4 py-16">
-        <h1 className="text-3xl font-bold mb-8 text-accent">Experience</h1>
-        <div className="border-l-2 border-accent/40 pl-4">
+      <section className="relative z-10 max-w-3xl mx-auto px-4 pt-28 pb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        >
+          <p className="font-mono text-sm text-accent mb-2">// experience</p>
+          <h1 className="text-3xl md:text-4xl font-bold mb-12 text-white">Experience</h1>
+        </motion.div>
+
+        <ol className="relative ml-3 space-y-10 before:absolute before:left-0 before:top-1 before:bottom-0 before:w-px before:bg-gradient-to-b before:from-accent/70 before:via-accent/25 before:to-transparent">
           {experiences.map((exp, idx) => (
-            <motion.div
+            <motion.li
               key={exp.company + idx}
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: idx * 0.1, ease: "easeOut" }}
-              style={{ position: 'relative', marginBottom: '2.5rem' }}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.5, delay: idx * 0.08, ease: "easeOut" }}
+              className="relative pl-8"
             >
-              <div className="absolute -left-5 top-3 w-3 h-3 bg-neon rounded-full shadow-lg" />
-              <div className="bg-primary/80 rounded-lg shadow-md p-5">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-1">
-                  <span className="font-mono text-sm text-white/60">{exp.time}</span>
-                  <div className="flex gap-2 flex-wrap">
-                    {exp.tech.map((t, i) => (
-                      <span key={i} className="group relative flex items-center">
-                        {t.icon && <span className="text-accent text-lg">{t.icon}</span>}
-                        <span className="absolute left-1/2 -translate-x-1/2 top-8 scale-0 group-hover:scale-100 transition bg-black/80 text-xs text-white px-2 py-1 rounded shadow-lg z-10 whitespace-nowrap">{t.label}</span>
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <h2 className="text-xl font-bold text-neon mb-1">{exp.company} <span className="text-white/80 font-normal text-base">| {exp.role}</span></h2>
-                <ul className="list-disc pl-5 text-white/90 space-y-1">
+              <span className="absolute -left-[6px] top-1.5 w-3 h-3 rounded-full bg-accent shadow-[0_0_12px_rgba(56,189,248,0.9)] ring-4 ring-accent/15" />
+              <div className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-md p-6 hover:border-accent/40 hover:bg-white/[0.05] transition-colors duration-300">
+                <p className="font-mono text-xs text-white/40 mb-2">{exp.time}</p>
+                <h2 className="text-lg font-bold text-white mb-0.5">{exp.role}</h2>
+                <p className="text-accent font-medium mb-4">{exp.company}</p>
+                <ul className="space-y-2 mb-5">
                   {exp.duties.map((d, i) => (
-                    <li key={i}>{d}</li>
+                    <li key={i} className="flex gap-2.5 text-sm text-white/75 leading-relaxed">
+                      <span className="text-accent mt-0.5 shrink-0">▹</span>
+                      {d}
+                    </li>
                   ))}
                 </ul>
+                <div className="flex flex-wrap gap-2">
+                  {exp.tech.map((t, i) => (
+                    <span
+                      key={i}
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs rounded-md bg-white/5 border border-white/10 text-white/70 font-mono"
+                    >
+                      <span className="text-accent text-sm leading-none">{t.icon}</span>
+                      {t.label}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </motion.div>
+            </motion.li>
           ))}
-        </div>
+        </ol>
       </section>
     </main>
   );
